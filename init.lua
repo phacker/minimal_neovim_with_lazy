@@ -24,8 +24,19 @@ vim.opt.hlsearch = false
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = false
+vim.opt.termguicolors = true
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 vim.keymap.set('n', '<space>w', '<cmd>write<cr>', {desc = 'Save'})
+vim.keymap.set('n', '<space> ', '<cmd>Telescope file_browser<cr>')
 
-require("lazy").setup('plugins')
-
+require("lazy").setup({
+		{ "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}, },
+		{ "nvim-telescope/telescope-file-browser.nvim", dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" } },
+		{ "nvim-treesitter/nvim-treesitter" },
+	}
+)
+	
+vim.cmd[[colorscheme tokyonight]]
