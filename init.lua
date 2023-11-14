@@ -29,13 +29,15 @@ vim.opt.termguicolors = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.keymap.set('n', '<space>w', '<cmd>write<cr>', {desc = 'Save'})
 vim.keymap.set('n', '<space> ', '<cmd>Telescope file_browser<cr>')
+vim.keymap.set("n", "<leader>/", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+
 
 require("lazy").setup({
-		{ "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}, },
-		{ "nvim-telescope/telescope-file-browser.nvim", dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" } },
+		{ "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {}},
 		{ "nvim-treesitter/nvim-treesitter" },
+		{ "nvim-telescope/telescope-file-browser.nvim", dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }},
+		{ "nvim-telescope/telescope-live-grep-args.nvim", dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }},
 	}
 )
 	
